@@ -1,15 +1,15 @@
 demoJpaSpring
 =============
 En fait dans le web.xml, il faut ajouter le Listener suivant :
-	  <context-param>
-	    <param-name>contextConfigLocation</param-name>
-	    <param-value>/WEB-INF/classes/applicationContext-jpa.xml</param-value>
-	  </context-param>
-	  <listener>
-	    <listener-class>
+	  &lt;context-param&gt;
+	    &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+	    &lt;param-value&gt;/WEB-INF/classes/applicationContext-jpa.xml&lt;/param-value&gt;
+	  &lt;/context-param&gt;
+	  &lt;listener&gt;
+	    &lt;listener-class&gt;
 	            org.springframework.web.context.ContextLoaderListener
-	        </listener-class>
-	  </listener>
+	        &lt;/listener-class&gt;
+	  &lt;/listener&gt;
 
 Cela va entre autres charger le EntityManagerFactory (et donc lancer l'initialisation de la base). Cela devrait donc également démarrer quartz (s'il est bien configuré dans le applicationContext, je ne l'ai pas mis dans la démo).
 
@@ -17,7 +17,7 @@ Ensuite, au niveau de ton contrôleur ou de ta servlet (en fait à partir du mom
 
 	ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());
 
-Puis tu récupère ton service, comme d'hab:
+Puis tu récupères ton service, comme d'hab:
 	UserService service = context.getBean(UserService.class);
 
 Dans l'exemple je l'ai mis dans la JSP, mais c'est un peu crado...
