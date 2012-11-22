@@ -4,6 +4,8 @@ Exemple de projet basé sur JPA + Spring + Slf4j.
 
 ## Utilisation logback + slf4j
 
+Ajouter les dépendances slf4j-api et logback-classic.
+
 Fichier de configuration logback dans : src/main/resources/logback.xml
 
 Déclaration d'un logger:
