@@ -1,5 +1,31 @@
-demoJpaSpring
-=============
+# demoJpaSpring
+
+Exemple de projet basé sur JPA + Spring + Slf4j.
+
+## Utilisation logback + slf4j
+
+Fichier de configuration logback dans : src/main/resources/logback.xml
+
+Déclaration d'un logger:
+
+	import org.slf4j.Logger;
+	import org.slf4j.LoggerFactory;
+	...
+	@Service
+	public class UserService {
+		Logger logger = LoggerFactory.getLogger(UserService.class);
+
+
+Exemple d'utilisation dans la classe UserService :
+
+	public User updateUser(User user) {
+		logger.info("Appel de updateUser");
+		
+		// Exemple d'utilisation de placeholders avec slf4j
+		logger.debug("Modification du client {}, {}", user.getLastName(), user.getFirstName());
+
+
+## Liaisons Spring <-> JPA
 En fait dans le web.xml, il faut ajouter le Listener suivant :
 	  &lt;context-param&gt;
 	    &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
